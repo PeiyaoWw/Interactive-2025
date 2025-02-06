@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Guide</title>
+    <style>
+        body {
+            background-color: black;
+            color: limegreen;
+            font-family: monospace;
+            text-align: center;
+            padding: 20px;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: limegreen;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .button:hover {
+            background-color: darkgreen;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .fish {
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .fish:hover {
+            transform: scale(1.1);
+            color: cyan;
+        }
+
+        .dark-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .bubble {
+            position: absolute;
+            background-color: rgba(173, 216, 230, 0.6);
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎣 Fishing Guide 🐟</h1>
+
+    <button class="button" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+    <pre class="fish" onclick="playSound()">
+      ><(((('>      (Fish)
+       ><(((('> 
+      ><(((('>
+    </pre>
+
+    <audio id="splash-sound">
+        <source src="https://www.fesliyanstudios.com/play-mp3/4386" type="audio/mpeg">
+    </audio>
+
+    <a href="index.html"><button class="button">🏡 Home</button></a>
+    <a href="farm-animals.html"><button class="button">🐮 Farm Animals</button></a>
+    <a href="crops-guide.html"><button class="button">🌾 Crops</button></a>
+    <a href="tools-guide.html"><button class="button">🔨 Tools</button></a>
+
+   
+
+    <pre>
+            ,.  _~-.,               .
+           ~'`_ \/,_. \_
+          / ,"_>@`,__`~.)             |           .
+          | |  @@@@'  ",! .           .          '
+          |/   ^^@     .!  \          |         /
+          `' .^^^     ,'    '         |        .             .
+           .^^^   .          \                /          .
+          .^^^       '  .     \       |      /       . '
+.,.,.     ^^^             ` .   .,+~'`^`'~+,.     , '
+&&&&&&,  ,^^^^.  . ._ ..__ _  .'             '. '_ __ ____ __ _ .. .  .
+%%%%%%%%%^^^^^^%%&&;_,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,
+&&&&&%%%%%%%%%%%%%%%%%%&&;,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=
+%%%%%&&&&&&&&&&&%%%%&&&_,.;^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,
+%%%%%%%%%&&&&&&&&&-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-==--^'~=-.,__,.-=~'
+##mjy#####*"'
+_,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,.-=~'`^`'~=-.,__,.-=~'
+
+~`'^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^`'~=-.,__,.-=~'`^
+<!-- ASCII Art Table -->
+    <table align="center">
+        <tr>
+            <!-- First ASCII Art -->
+            <td>
+                <pre>
+      _______
+ ,-~~~       ~~~-,
+(                 )
+ \_-, , , , , ,-_/
+    / / | | \ \
+    | | | | | |
+    | | | | | |
+   / / /   \ \ \
+   | | |   | | |
+   </pre>
+            </td>
+            
+            <!-- Second ASCII Art -->
+            <td>
+                <pre>
+      \/)/)
+    _'  oo(_.-. 
+  /'.     .---'
+/'-./    (
+)     ; __\
+\_.'\ : __|
+     )  _/
+    (  (,.
+  mrf'-.-'
+   </pre>
+            </td>
+            
+            <!-- Third ASCII Art (Newly Added) -->
+            <td>
+                <pre>
+   o                 o
+                  o
+         o   ______      o
+           _/  (   \_
+ _       _/  (       \_  O
+| \_   _/  (   (    0  \
+|== \_/  (   (          |
+|=== _ (   (   (        |
+|==_/ \_ (   (          |
+|_/     \_ (   (    \__/
+          \_ (      _/
+            |  |___/
+           /__/
+            </pre>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<pre>
+     _________         .    .
+(..       \_    ,  |\  /|
+ \       O  \  /|  \ \/ /
+  \______    \/ |   \  / 
+     vvvv\    \ |   /  |
+     \^^^^  ==   \_/   |
+      `\_   ===    \.  |
+      / /\_   \ /      |
+      |/   \_  \|      /
+ snd         \________/
+
+       .            
+\_____)\_____
+/--v____ __`<         
+        )/           
+        '
+
+                             
+ 
+</body>
+</html>
