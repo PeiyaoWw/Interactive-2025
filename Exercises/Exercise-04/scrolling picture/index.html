@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stardew Valley Scrolling Story</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2c1d27;
+            color: #fff;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        .section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+            text-align: center;
+            padding: 20px;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .image-section {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Image Gallery Styling */
+        .image-gallery {
+            display: flex;
+            flex-direction: column; /* Stack images vertically */
+            align-items: center;
+            gap: 10px; /* Space between images */
+            padding: 20px;
+        }
+        .image-gallery img {
+            width: 80%; /* Set all images to the same width */
+            max-width: 500px; /* Prevent images from being too wide */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .image-gallery img {
+                width: 90%; /* Make images take more space on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section" id="section1">You arrive in Stardew Valley...</div>
+    <div class="section image-section" id="section2" style="background-image: url('https://source.unsplash.com/1600x900/?farm,fields');">
+        The farm is overgrown, but full of potential...
+    </div>
+    <div class="section" id="section3">You meet friendly villagers eager to help...</div>
+    <div class="section image-section" id="section4" style="background-image: url('https://source.unsplash.com/1600x900/?village');">
+        Pelican Town welcomes you with open arms...
+    </div>
+    <div class="section" id="section5">The seasons change, and a new adventure begins...</div>
+    <div class="section" id="section6">You till the soil, plant seeds, and water your crops...</div>
+    <div class="section image-section" id="section7" style="background-image: url('https://source.unsplash.com/1600x900/?crops');">
+        The first sprouts emerge, bringing hope...
+    </div>
+    <div class="section" id="section8">A rainy day allows you to explore the mines...</div>
+    <div class="section image-section" id="section9" style="background-image: url('https://source.unsplash.com/1600x900/?mine,cave');">
+        Deep underground, you find rare ores and lurking dangers...
+    </div>
+    <div class="section" id="section10">You attend the Stardew Valley Fair...</div>
+    <div class="section image-section" id="section11" style="background-image: url('https://source.unsplash.com/1600x900/?festival,celebration');">
+        Games, contests, and delicious food await!
+    </div>
+    <div class="section" id="section12">As years pass, your farm flourishes...</div>
+    <div class="section image-section" id="section13" style="background-image: url('https://source.unsplash.com/1600x900/?farmhouse');">
+        Your cozy home, a testament to your hard work...
+    </div>
+    <div class="section" id="section14">One evening, you look up at the stars...</div>
+    <div class="section image-section" id="section15" style="background-image: url('https://source.unsplash.com/1600x900/?stars,night');">
+        This valley has truly become your home.
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+        <img src="01.jpeg" alt="Stardew Valley Image 1">
+        <img src="02.jpeg" alt="Stardew Valley Image 2">
+        <img src="03.jpeg" alt="Stardew Valley Image 3">
+        <img src="04.jpeg" alt="Stardew Valley Image 4">
+        <img src="05.jpeg" alt="Stardew Valley Image 5">
+        <img src="06.jpeg" alt="Stardew Valley Image 6">
+        <img src="07.jpeg" alt="Stardew Valley Image 7">
+        <img src="08.jpeg" alt="Stardew Valley Image 8">
+        <img src="09.jpeg" alt="Stardew Valley Image 9">
+        <img src="10.jpeg" alt="Stardew Valley Image 10">
+        <img src="11.jpeg" alt="Stardew Valley Image 11">
+        <img src="12.jpeg" alt="Stardew Valley Image 12">
+        <img src="13.jpeg" alt="Stardew Valley Image 13">
+        <img src="14.jpeg" alt="Stardew Valley Image 14">
+        <img src="15.jpeg" alt="Stardew Valley Image 15">
+    </div>
+
+    <script>
+        function revealSections() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.75) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        document.addEventListener('scroll', revealSections);
+        window.onload = revealSections;
+    </script>
+</body>
+</html>
