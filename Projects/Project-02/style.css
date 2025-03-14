@@ -1,0 +1,48 @@
+/* Apply styles only when printing */
+@media print {
+    /* Hide navigation, footer, or unnecessary elements */
+    nav, footer, .no-print {
+        display: none;
+    }
+
+    /* Ensure content fills the full width */
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+        margin: 0;
+        padding: 10px;
+    }
+
+    /* Improve readability */
+    p, h1, h2, h3 {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure links display correctly */
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    /* Force page breaks for specific sections */
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* Table optimization */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+}
