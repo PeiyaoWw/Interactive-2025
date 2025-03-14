@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardew Valley Inspired Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        body {
+            text-align: center;
+            background-color: #90c17f;
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 10px solid black;
+            background-color: #fffae6;
+            box-shadow: 10px 10px 0px #333;
+            position: relative;
+        }
+        .title {
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+        .selection-box {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 5px solid black;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 5px 5px 0px #333;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+        .selection-box:hover {
+            background-color: #ffeb3b;
+            transform: translateY(-5px);
+        }
+        .selection-title {
+            font-size: 40px;
+            font-weight: bold;
+            padding: 10px;
+            color: #000;
+        }
+        .selection-text {
+            font-size: 20px;
+            padding: 10px;
+            text-align: left;
+            color: #333;
+        }
+        .button {
+            font-family: 'VT323', monospace;
+            font-size: 28px;
+            background: #f4a261;
+            border: 5px solid #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background: #e76f51;
+            transform: translateY(-3px);
+        }
+        .main-image {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            border: 5px solid black;
+        }
+        .developer-image {
+            width: 100%;
+            max-width: 250px;
+            margin-top: 30px;
+        }
+        .music-controls {
+            margin-bottom: 20px;
+        }
+        .weather {
+            font-size: 30px;
+            margin-top: 15px;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            .selection-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/Main_Logo.png" alt="Stardew Valley" class="main-image">
+        <h1 class="title">Welcome to Stardew Valley</h1>
+
+        <audio id="bgm" muted autoplay loop>
+            <source src="audio/Stardew_Valley_Overture.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="music-controls">
+            <button class="button" id="musicButton" onclick="toggleBGM()">🎵 Toggle Music</button>
+        </div>
+
+        <div class="selection-box" onclick="navigate('map.html')">
+            <div class="selection-title">Map</div>
+            <div class="selection-text">Explore the beautiful lands of Stardew Valley.</div>
+        </div>
+
+        <div class="selection-box" onclick="navigate('villagers.html')">
+            <div class="selection-title">Villagers</div>
+            <div class="selection-text">Meet the amazing villagers and make friends.</div>
+        </div>
+
+        <div class="selection-box" onclick="navigate('fish.html')">
+            <div class="selection-title">Fish</div>
+            <div class="selection-text">Catch and discover different types of fish.</div>
+        </div>
+
+        <div class="selection-box" onclick="navigate('crops.html')">
+            <div class="selection-title">Crops</div>
+            <div class="selection-text">Grow and harvest various seasonal crops.</div>
+        </div>
+
+        <div class="selection-box" onclick="navigate('animals.html')">
+            <div class="selection-title">Animals</div>
+            <div class="selection-text">Take care of farm animals and produce dairy and eggs.</div>
+        </div>
+
+        <button class="button" onclick="generateWeather()">🌤️ Check Tomorrow's Weather</button>
+        <p class="weather" id="weather"></p>
+
+        <img src="images/Developed.gif" alt="Developed by ConcernedApe" class="developer-image">
+    </div>
+
+    <script>
+        function generateWeather() {
+            const weatherOptions = ["Sunny ☀️", "Rainy 🌧️", "Stormy ⛈️", "Snowy ❄️", "Windy 💨", "Foggy 🌫️"];
+            const randomWeather = weatherOptions[Math.floor(Math.random() * weatherOptions.length)];
+            document.getElementById("weather").innerText = "Tomorrow's weather: " + randomWeather;
+        }
+
+        function navigate(page) {
+            window.location.href = page;
+        }
+
+        function toggleBGM() {
+            let bgm = document.getElementById("bgm");
+            let musicButton = document.getElementById("musicButton");
+
+            if (bgm.paused) {
+                bgm.muted = false;
+                bgm.play();
+                musicButton.innerText = "⏸ Pause Music";
+            } else {
+                bgm.pause();
+                musicButton.innerText = "🎵 Play Music";
+            }
+        }
+
+        window.onload = function () {
+            let bgm = document.getElementById("bgm");
+            let musicButton = document.getElementById("musicButton");
+
+            bgm.muted = false;
+            musicButton.innerText = "🎵 Toggle Music";
+
+            document.addEventListener("click", function() {
+                if (bgm.paused) {
+                    bgm.play();
+                    musicButton.innerText = "⏸️ Pause Music";
+                }
+                document.removeEventListener("click", arguments.callee);
+            });
+        };
+    </script>
+</body>
+</html>
