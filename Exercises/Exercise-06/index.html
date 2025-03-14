@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation - Christmas Tree</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, navy, black); /*changed*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 80px solid green;
+            opacity: 0.8;
+            animation: sway 3s infinite alternate ease-in-out;
+        }
+
+        .triangle:nth-child(2) {
+            top: 60px;
+            border-bottom-width: 100px;
+            animation-delay: 0.2s;
+        }
+
+        .triangle:nth-child(3) {
+            top: 120px;
+            border-bottom-width: 120px;
+            animation-delay: 0.4s;
+        }
+
+        .circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: red;
+            animation: twinkle 1.5s infinite alternate, moveLights 3s infinite alternate;
+        }
+
+        .circle:nth-child(4) {
+            top: 40px;
+            left: 30px;
+        }
+
+        .circle:nth-child(5) {
+            top: 80px;
+            right: 30px;
+        }
+
+        .circle:nth-child(6) {
+            top: 140px;
+            left: 40px;
+        }
+
+        .star {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+            font-size: 30px;
+            color: yellow;
+            opacity: 1; /*changed*/
+            animation: twinkle 1s infinite alternate, spin 3s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes moveLights {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(5px, -5px, 0);
+            }
+        }
+
+        @keyframes sway {
+            0% {
+                transform: rotate3d(0, 0, 1, -3deg);
+            }
+            100% {
+                transform: rotate3d(0, 0, 1, 3deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="star">★</div>
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</body>
+</html>
