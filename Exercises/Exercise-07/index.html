@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8: Coding from Life</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #DADADA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Canvas */
+        .canvas {
+            width: 900px;
+            height: 556px;
+            background: white;
+            position: relative;
+            border: solid black 5px;
+            overflow: hidden;
+        }
+
+        /* Square (with opacity) */
+        .square {
+            width: 120px;
+            height: 120px;
+            background: rgba(0, 0, 255, 0.5); /* Semi-transparent blue */
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Circle (with filter & animation) */
+        .circle {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 250px;
+            left: 300px;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: bounce 1.5s infinite alternate ease-in-out;
+        }
+
+        /* Bounce animation */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        /* Rectangle (with transition) */
+        .rectangle {
+            width: 180px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            top: 150px;
+            left: 450px;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .rectangle:hover {
+            background: yellow;
+        }
+
+        /* Triangle (with transform & hover effect) */
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid orange;
+            position: absolute;
+            top: 350px;
+            left: 600px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .triangle:hover {
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="canvas">
+        <!-- Square with opacity -->
+        <div class="square"></div>
+
+        <!-- Circle with filter and animation -->
+        <div class="circle"></div>
+
+        <!-- Rectangle with transition -->
+        <div class="rectangle"></div>
+
+        <!-- Triangle with hover effect -->
+        <div class="triangle"></div>
+    </div>
+
+</body>
+</html>
