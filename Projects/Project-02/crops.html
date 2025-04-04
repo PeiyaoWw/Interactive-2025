@@ -1,232 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Stardew Valley Farm</title>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <style>
-        body {
-            text-align: center;
-            background-color: #90c17f;
-            font-family: 'VT323', monospace;
-            font-size: 20px;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        .farm {
-            display: grid;
-            grid-template-columns: repeat(5, 64px);
-            grid-template-rows: repeat(5, 64px);
-            gap: 5px;
-            background-color: #5a8f45;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .plot {
-            width: 64px;
-            height: 64px;
-            background-color: #8b5a2b;
-            border: 2px solid #654321;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-        .plot:active {
-            transform: scale(0.9);
-        }
-        .seeds {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #fff;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .seeds img {
-            width: 48px;
-            cursor: pointer;
-            margin: 5px;
-            transition: border 0.3s;
-        }
-        .selected {
-            border: 2px solid green;
-        }
-        .harvestable {
-            animation: shake 0.3s infinite alternate;
-            cursor: pointer;
-        }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(3px); }
-        }
-        .button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            font-family: 'VT323', monospace;
-            border-radius: 5px;
-        }
-        #musicButton {
-            background-color: #f4a261;
-        }
-        #backToHome {
-            background-color: #ff5555;
-            color: white;
-        }
-        .inventory-container {
-            margin-top: 15px;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            text-align: left;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Static Stardew Valley Layout</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      text-align: center;
+      background-color: #90c17f;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .farm {
+      display: grid;
+      grid-template-columns: repeat(5, 64px);
+      grid-template-rows: repeat(5, 64px);
+      gap: 5px;
+      background-color: #5a8f45;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .plot {
+      width: 64px;
+      height: 64px;
+      background-color: #8b5a2b;
+      border: 2px solid #654321;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .seeds {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .seeds img {
+      width: 48px;
+      margin: 5px;
+    }
+
+    .button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      font-family: 'VT323', monospace;
+      border-radius: 5px;
+    }
+
+    #musicButton {
+      background-color: #f4a261;
+    }
+
+    #backToHome {
+      background-color: #ff5555;
+      color: white;
+    }
+
+    .inventory-container {
+      margin-top: 15px;
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-    <h1 class="title">Stardew Valley Farm</h1>
-    <p>Click on a seed to select it, then click on an empty plot to plant. Wait for the crop to grow, then click again to harvest!</p>
+  <h1 class="title">Stardew Valley Farm</h1>
+  <p>This is a static farm layout with seed selection. Interactive features are disabled.</p>
 
-    <button class="button" id="musicButton" onclick="toggleMusic()">🎵 Toggle Music</button>
-    <button class="button" id="backToHome" onclick="goHome()">🏡 Back to Home</button>
+  <button class="button" id="musicButton">🎵 Toggle Music</button>
+  <button class="button" id="backToHome">🏡 Back to Home</button>
 
-    <div class="inventory-container">
-        <h3>Inventory</h3>
-        <ul id="inventoryList"></ul>
+  <div class="inventory-container">
+    <h3>Inventory</h3>
+    <ul>
+      <li>carrot: 0</li>
+      <li>strawberry: 0</li>
+      <li>corn: 0</li>
+      <!-- Add more crops if you want -->
+    </ul>
+  </div>
+
+  <div class="container">
+    <!-- Seed Selection Bar -->
+    <div class="seeds">
+      <h2>Select a Seed</h2>
+      <img src="images/Carrot_Seeds.png" alt="Carrot Seeds">
+      <img src="images/Strawberry_Seeds.png" alt="Strawberry Seeds">
+      <img src="images/Corn_Seeds.png" alt="Corn Seeds">
+      <img src="images/Eggplant_Seeds.png" alt="Eggplant Seeds">
+      <img src="images/Cranberry_Seeds.png" alt="Cranberry Seeds">
+      <img src="images/Garlic_Seeds.png" alt="Garlic Seeds">
+      <img src="images/Blueberry_Seeds.png" alt="Blueberry Seeds">
+      <img src="images/Melon_Seeds.png" alt="Melon Seeds">
+      <img src="images/Pumpkin_Seeds.png" alt="Pumpkin Seeds">
     </div>
 
-    <div class="container">
-        <!-- Seed Selection Bar -->
-        <div class="seeds">
-            <h2>Select a Seed</h2>
-            <img src="images/Carrot_Seeds.png" alt="Carrot Seeds" onclick="selectSeed('carrot', event)">
-            <img src="images/Strawberry_Seeds.png" alt="Strawberry Seeds" onclick="selectSeed('strawberry', event)">
-            <img src="images/Corn_Seeds.png" alt="Corn Seeds" onclick="selectSeed('corn', event)">
-            <img src="images/Eggplant_Seeds.png" alt="Eggplant Seeds" onclick="selectSeed('eggplant', event)">
-            <img src="images/Cranberry_Seeds.png" alt="Cranberry Seeds" onclick="selectSeed('cranberry', event)">
-            <img src="images/Garlic_Seeds.png" alt="Garlic Seeds" onclick="selectSeed('garlic', event)">
-            <img src="images/Blueberry_Seeds.png" alt="Blueberry Seeds" onclick="selectSeed('blueberry', event)">
-            <img src="images/Melon_Seeds.png" alt="Melon Seeds" onclick="selectSeed('melon', event)">
-            <img src="images/Pumpkin_Seeds.png" alt="Pumpkin Seeds" onclick="selectSeed('pumpkin', event)">
-        </div>
-        <!-- Farm Grid -->
-        <div class="farm" id="farm"></div>
+    <!-- Farm Grid -->
+    <div class="farm">
+      <!-- 5x5 Grid -->
+      <!-- Each plot is empty -->
+      <!-- You can fill some with crops manually if you'd like a "pre-populated" look -->
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
+      <div class="plot"></div>
     </div>
-
-    <audio id="music" src="audio/13. Summer (Nature's Crescendo).mp3" loop></audio>
-
-    <script>
-        let selectedSeed = null;
-        let inventory = {};
-        let musicPlaying = false;
-        let firstClick = true;
-
-        let crops = {
-            carrot: "images/Carrot.png",
-            strawberry: "images/Strawberry.png",
-            corn: "images/Corn.png",
-            eggplant: "images/Eggplant.png",
-            cranberry: "images/Cranberries.png",
-            garlic: "images/Garlic.png",
-            blueberry: "images/Blueberry.png",
-            melon: "images/Melon.png",
-            pumpkin: "images/Pumpkin.png"
-        };
-
-        function toggleMusic() {
-            let music = document.getElementById("music");
-            let button = document.getElementById("musicButton");
-
-            if (firstClick) {
-                music.play();
-                button.innerHTML = "⏸️ Pause Music";
-                firstClick = false;
-                musicPlaying = true;
-            } else {
-                if (musicPlaying) {
-                    music.pause();
-                    button.innerHTML = "🎵 Play Music";
-                } else {
-                    music.play();
-                    button.innerHTML = "⏸️ Pause Music";
-                }
-                musicPlaying = !musicPlaying;
-            }
-        }
-
-        function goHome() {
-            window.location.href = "index.html"; // Change to your actual home page URL
-        }
-
-        function selectSeed(seed, event) {
-            selectedSeed = seed;
-            document.querySelectorAll(".seeds img").forEach(img => img.classList.remove("selected"));
-            event.target.classList.add("selected");
-        }
-
-        function plantCrop(plot) {
-            if (selectedSeed && !plot.dataset.crop) {
-                plot.dataset.crop = selectedSeed;
-                plot.innerHTML = "🌱";
-
-                setTimeout(() => {
-                    plot.innerHTML = "🌿";
-                }, 3000);
-
-                setTimeout(() => {
-                    plot.innerHTML = `<img src="${crops[selectedSeed]}" width="48" class="harvestable">`;
-                    plot.dataset.grown = "true";
-                }, 6000);
-            }
-        }
-
-        function harvestCrop(plot) {
-            if (plot.dataset.grown) {
-                let cropType = plot.dataset.crop;
-                inventory[cropType] = (inventory[cropType] || 0) + 1;
-                plot.innerHTML = "";
-                plot.dataset.crop = "";
-                plot.dataset.grown = "";
-                updateInventory();
-            }
-        }
-
-        function updateInventory() {
-            let inventoryList = document.getElementById("inventoryList");
-            inventoryList.innerHTML = "";
-            for (let item in inventory) {
-                let li = document.createElement("li");
-                li.textContent = `${item}: ${inventory[item]}`;
-                inventoryList.appendChild(li);
-            }
-        }
-
-        function createFarm() {
-            let farm = document.getElementById("farm");
-            for (let i = 0; i < 25; i++) {
-                let plot = document.createElement("div");
-                plot.classList.add("plot");
-                plot.onclick = () => {
-                    if (!plot.dataset.grown) {
-                        plantCrop(plot);
-                    } else {
-                        harvestCrop(plot);
-                    }
-                };
-                farm.appendChild(plot);
-            }
-        }
-
-        createFarm();
-    </script>
+  </div>
 </body>
 </html>
