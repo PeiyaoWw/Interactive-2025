@@ -1,111 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 8: Coding from Life</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simplified Animation</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            background: #DADADA;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-        /* Canvas */
-        .canvas {
-            width: 900px;
-            height: 556px;
-            background: white;
-            position: relative;
-            border: solid black 5px;
-            overflow: hidden;
-        }
+    .canvas {
+      width: 900px;
+      height: 556px;
+      background: white;
+      position: relative;
+      border: solid #444 4px;
+      overflow: hidden;
+    }
 
-        /* Square (with opacity) */
-        .square {
-            width: 120px;
-            height: 120px;
-            background: rgba(0, 0, 255, 0.5); /* Semi-transparent blue */
-            position: absolute;
-            top: 100px;
-            left: 200px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-        }
+    .left-block {
+      width: 140px;
+      height: 240px;
+      background: #b5ead7;
+      border-radius: 0 60px 0 0;
+      position: absolute;
+      bottom: 80px;
+      left: 80px;
+      box-shadow: inset -20px 0 #1d1b56;
+    }
 
-        /* Circle (with filter & animation) */
-        .circle {
-            width: 100px;
-            height: 100px;
-            background: red;
-            position: absolute;
-            top: 250px;
-            left: 300px;
-            border-radius: 50%;
-            filter: blur(2px);
-            animation: bounce 1.5s infinite alternate ease-in-out;
-        }
+    .platform {
+      width: 300px;
+      height: 60px;
+      background: #a9a9a9;
+      position: absolute;
+      bottom: 60px;
+      left: 280px;
+      border-radius: 50%;
+    }
 
-        /* Bounce animation */
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-20px); }
-        }
+    .sphere {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      animation: pulse 2.5s infinite ease-in-out;
+    }
 
-        /* Rectangle (with transition) */
-        .rectangle {
-            width: 180px;
-            height: 100px;
-            background: green;
-            position: absolute;
-            top: 150px;
-            left: 450px;
-            transition: background 0.5s ease-in-out;
-        }
+    .sphere1 { background: #ffe0e0; top: 160px; left: 300px; animation-delay: 0s; }
+    .sphere2 { background: #888; top: 120px; left: 360px; animation-delay: 0.2s; }
+    .sphere3 { background: #dfbfbf; top: 140px; left: 420px; animation-delay: 0.4s; }
+    .sphere4 { background: #ccc; top: 200px; left: 340px; animation-delay: 0.6s; }
+    .sphere5 { background: #ddd; top: 220px; left: 400px; animation-delay: 0.8s; }
 
-        .rectangle:hover {
-            background: yellow;
-        }
+    .abstract-figure {
+      width: 140px;
+      height: 100px;
+      background: #fdf5e6;
+      position: absolute;
+      transform: rotate(-20deg);
+      top: 260px;
+      left: 500px;
+      clip-path: polygon(0 0, 100% 30%, 80% 100%, 0% 100%);
+    }
 
-        /* Triangle (with transform & hover effect) */
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 100px solid orange;
-            position: absolute;
-            top: 350px;
-            left: 600px;
-            transition: transform 0.3s ease-in-out;
-        }
+    .dark-base {
+      width: 300px;
+      height: 50px;
+      background: #1d1b56;
+      position: absolute;
+      bottom: 10px;
+      right: 80px;
+      box-shadow: 60px 0 #eeeeee inset;
+    }
 
-        .triangle:hover {
-            transform: scale(1.2);
-        }
+    .moving-square {
+      width: 100px;
+      height: 100px;
+      background: #ff9a8b;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      animation: slide 4s infinite alternate ease-in-out;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
 
-    </style>
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(200px); }
+    }
+  </style>
 </head>
 <body>
-
-    <div class="canvas">
-        <!-- Square with opacity -->
-        <div class="square"></div>
-
-        <!-- Circle with filter and animation -->
-        <div class="circle"></div>
-
-        <!-- Rectangle with transition -->
-        <div class="rectangle"></div>
-
-        <!-- Triangle with hover effect -->
-        <div class="triangle"></div>
-    </div>
-
+  <div class="canvas">
+    <div class="left-block"></div>
+    <div class="platform"></div>
+    <div class="sphere sphere1"></div>
+    <div class="sphere sphere2"></div>
+    <div class="sphere sphere3"></div>
+    <div class="sphere sphere4"></div>
+    <div class="sphere sphere5"></div>
+    <div class="abstract-figure"></div>
+    <div class="dark-base"></div>
+    <div class="moving-square"></div>
+  </div>
 </body>
 </html>
