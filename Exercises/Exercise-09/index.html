@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>May 2025 Calendar</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    .calendar {
+      max-width: 600px;
+      margin: auto;
+      border: 2px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: #fff;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      font-size: 1.5em;
+    }
+
+    .weekdays, .days {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .weekdays div, .day {
+      width: calc(100% / 7);
+      text-align: center;
+      padding: 10px 0;
+      border: 1px solid #ddd;
+    }
+
+    .weekdays div {
+      background: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .day {
+      background: #fafafa;
+    }
+
+    .day:hover {
+      background: #e0f7fa;
+      cursor: pointer;
+    }
+
+    .day.empty {
+      background: transparent;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calendar">
+    <div class="header">
+      <div class="month">May</div>
+      <div class="year">2025</div>
+    </div>
+    <div class="weekdays">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+    <div class="days">
+      <!-- Empty slots for alignment (May 1st, 2025 is Thursday) -->
+      <div class="day empty"></div>
+      <div class="day empty"></div>
+      <div class="day empty"></div>
+      <div class="day">1</div>
+      <div class="day">2</div>
+      <div class="day">3</div>
+      <div class="day">4</div>
+
+      <div class="day">5</div>
+      <div class="day">6</div>
+      <div class="day">7</div>
+      <div class="day">8</div>
+      <div class="day">9</div>
+      <div class="day">10</div>
+      <div class="day">11</div>
+
+      <div class="day">12</div>
+      <div class="day">13</div>
+      <div class="day">14</div>
+      <div class="day">15</div>
+      <div class="day">16</div>
+      <div class="day">17</div>
+      <div class="day">18</div>
+
+      <div class="day">19</div>
+      <div class="day">20</div>
+      <div class="day">21</div>
+      <div class="day">22</div>
+      <div class="day">23</div>
+      <div class="day">24</div>
+      <div class="day">25</div>
+
+      <div class="day">26</div>
+      <div class="day">27</div>
+      <div class="day">28</div>
+      <div class="day">29</div>
+      <div class="day">30</div>
+      <div class="day">31</div>
+    </div>
+  </div>
+
+</body>
+</html>
