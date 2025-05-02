@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guest Spot</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .moving-square {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: drift 30s linear infinite;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+      z-index: 2;
+      position: relative;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    .nav-button {
+      display: inline-block;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    textarea, input[type="color"] {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+    }
+
+    button {
+      padding: 0.7rem;
+      background-color: #76c893;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #5aa97d;
+    }
+
+    #forest {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    #moodDisplay {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .moodLeaf {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      transition: transform 0.2s;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    }
+
+    .moodLeaf:hover::after {
+      content: attr(data-message);
+      position: absolute;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 0.4rem;
+      border-radius: 6px;
+      top: 50px;
+      left: -20px;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      z-index: 10;
+    }
+
+    .clear-btn {
+      background-color: #ff6b6b;
+      margin-top: 1rem;
+    }
+
+    .clear-btn:hover {
+      background-color: #e85a5a;
+    }
+  </style>
+</head>
+<body>
+  <div class="moving-square"></div>
+
+  <div class="container">
+    <a href="index.html" class="nav-button">← back to home</a>
+    <h1>Guest Spot</h1>
+
+    <form id="moodForm">
+      <label for="color">Choose your vibe color:</label>
+      <input type="color" id="color" name="color" value="#6ec6ff" />
+
+      <label for="message">Leave a message (optional):</label>
+      <textarea id="message" name="message" placeholder="Say something nice, fun, or random..."></textarea>
+
+      <button type="submit">Leave Your Spot</button>
+    </form>
+
+    <div id="forest">
+      <h2>The Wall of Spots</h2>
+      <div id="moodDisplay"></div>
+      <button class="clear-btn" id="clearMoods">🧹 Clear All Spots</button>
+    </div>
+  </div>
+
+  <script>
+    function loadMoods() {
+      const saved = localStorage.getItem('moods');
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    function saveMoods(moods) {
+      localStorage.setItem('moods', JSON.stringify(moods));
+    }
+
+    function renderMoods() {
+      const moodDisplay = document.getElementById('moodDisplay');
+      moodDisplay.innerHTML = '';
+      const moods = loadMoods();
+      moods.forEach(mood => {
+        const moodLeaf = document.createElement('div');
+        moodLeaf.className = 'moodLeaf';
+        moodLeaf.style.backgroundColor = mood.color;
+        if (mood.message) {
+          moodLeaf.setAttribute('data-message', mood.message);
+        }
+        moodDisplay.appendChild(moodLeaf);
+      });
+    }
+
+    document.getElementById('moodForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const color = document.getElementById('color').value;
+      const message = document.getElementById('message').value.trim();
+
+      const newMood = { color, message };
+      const moods = loadMoods();
+      moods.push(newMood);
+      saveMoods(moods);
+      renderMoods();
+
+      this.reset();
+      document.getElementById('color').value = '#6ec6ff';
+    });
+
+    document.getElementById('clearMoods').addEventListener('click', function () {
+      if (confirm("Are you sure you want to clear the Guest Spots?")) {
+        localStorage.removeItem('moods');
+        renderMoods();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', renderMoods);
+  </script>
+</body>
+</html>

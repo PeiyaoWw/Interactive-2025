@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Still & Wild</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .moving-square {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05); /* very soft white */
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: drift 30s linear infinite;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 1.5rem;
+      opacity: 0.7;
+      z-index: 2;
+    }
+
+    .nav-link {
+      position: absolute;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+    }
+
+    /* Positioning each link */
+    .home {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .about {
+      top: 25%;
+      left: 25%;
+    }
+
+    .field-notes {
+      top: 25%;
+      right: 25%;
+    }
+
+    .artists-collective {
+      bottom: 30%;
+      left: 20%;
+    }
+
+    .playlists-soundscapes {
+      bottom: 20%;
+      left: 30%;
+    }
+
+    .guest-spot {
+      bottom: 20%;
+      right: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="moving-square"></div>
+
+  <div class="center-text">Choose a path...</div>
+
+  <a href="index.html" class="nav-link home">
+    Home <div class="circle"></div>
+  </a>
+
+  <a href="about.html" class="nav-link about">
+    About <div class="circle"></div>
+  </a>
+
+  <a href="field-notes.html" class="nav-link field-notes">
+    Field Notes <div class="circle"></div>
+  </a>
+
+  <a href="Artists Collections.html" class="nav-link artists-collective">
+    Artists Collective <div class="circle"></div>
+  </a>
+
+  <a href="soundscapes.html" class="nav-link playlists-soundscapes">
+    Playlists & Soundscapes <div class="circle"></div>
+  </a>
+
+  <a href="guest-spot.html" class="nav-link guest-spot">
+    Guest Spot <div class="circle"></div>
+  </a>
+</body>
+</html>

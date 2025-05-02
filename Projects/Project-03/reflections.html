@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reflections — Still & Wild</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f0f8ff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #ffffffcc;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    blockquote {
+      margin-top: 2rem;
+      font-style: italic;
+      color: #555;
+      text-align: center;
+    }
+
+    .nav {
+      background-color: #eaf4f4;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .intro {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <h1>Still & Wild</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="field-notes.html">Field Notes</a></li>
+        <li><a href="Artists Collections.html">Artists Collections</a></li>
+        <li><a href="reflections.html">Reflections</a></li>
+        <li><a href="soundscapes.html">Playlists & Soundscapes</a></li>
+        <li><a href="guest-spot.html">Guest Spot</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Reflections</h2>
+      <p>Essays, meditations, and seasonal letters — a place where thoughts drift like clouds and settle like dew.</p>
+      <blockquote>
+        "In the hush of evening, everything that matters speaks without words."
+      </blockquote>
+    </section>
+
+    <script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+</script>
+  </main>
+
+  <footer style="text-align: center; padding: 2rem; font-size: 0.9rem;">
+    © Still & Wild — 2025
+  </footer>
+</body>
+</html>

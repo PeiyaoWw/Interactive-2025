@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Notes — Still & Wild</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+.intro {
+  text-align: center;
+  margin-bottom: 5rem; 
+}
+      .back-intro {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-intro:hover {
+      background: #eee;
+      transform: scale(1.05);
+    }
+
+
+.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+
+  .note {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circle {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.3s ease;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+    }
+
+
+    .circle-1 { background-image: url('images/tea garden drawing.jpg'); }
+    .circle-1:hover { background-image: url('images/tea garden.jpg'); }
+
+    .circle-2 { background-image: url('images/pelicans drawing.jpg'); }
+    .circle-2:hover { background-image: url('images/pelicans.jpg'); }
+
+    .circle-3 { background-image: url('images/wind drawing.jpg'); }
+    .circle-3:hover { background-image: url('images/windmill.jpg'); }
+
+    .circle-4 { background-image: url('images/grass drawing.jpg'); }
+    .circle-4:hover { background-image: url('images/grass.jpg'); }
+
+    .circle-5 { background-image: url('images/field drawing.jpg'); }
+    .circle-5:hover { background-image: url('images/field.jpg'); }
+
+    .note-label {
+      margin-top: 1rem;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .note:hover .note-label {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-intro" onclick="goBack()" aria-label="Back to Home">← back to home</button>
+<div class="intro">
+  <h1>Field Notes</h1>
+  <p>Small glimpses of the world outside — notes, sketches, and fleeting observations from our walks and wanderings.</p>
+</div>
+   <div class="grid">
+    <div class="note">
+      <div class="circle circle-1"></div>
+      <div class="note-label">The scene is from the Japanese Tea Garden. Trees grow quietly on the hillside, with flowers blooming here and there, as if infusing an unexpected poetic touch into this ordinary place.</div>
+    </div>
+    <div class="note">
+      <div class="circle circle-2"></div>
+      <div class="note-label">Two birds are swimming side by side on the water surface. The calm water reflects the light of the sky and the shadows of the trees. Their harmony reminds one of inner tranquility and the possibility of coexistence.</div>
+    </div>
+    <div class="note">
+      <div class="circle circle-3"></div>
+      <div class="note-label"> A large windmill standing against the wind. Here, the power of the wind is no longer abstract but visible and tangible, like a letter written by nature itself, encouraging us to move forward.</div>
+    </div>
+    <div class="note">
+      <div class="circle circle-4"></div>
+      <div class="note-label">The greenhouse garden. The air was filled with a moist green scent. Each plant was an independent little universe. I stopped and depicted among them, feeling the subtle yet firm existence of life.。</div>
+    </div>
+    <div class="note">
+      <div class="circle circle-5"></div>
+      <div class="note-label">It is a path surrounded by nature. Sunlight filtered through the gaps between the leaves, illuminating the steps and the mood. At that moment, it seemed as if all the restlessness gradually calmed down.</div>
+    </div>
+</div>
+   <script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  for (let i = 0; i < 400; i++) {
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+  <footer>© Still & Wild — 2025</footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+.leaf-left1, .leaf-left2, .leaf-right1, .leaf-right2 {
+  position: fixed;
+  font-size: 3rem;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.leaf-left1 {
+  left: 5vw;
+  top: -5vh;
+  animation: fallLeft1 7s linear infinite;
+}
+
+.leaf-left2 {
+  left: 10vw;
+  top: -8vh;
+  animation: fallLeft2 12s linear infinite;
+}
+
+.leaf-right1 {
+  right: 5vw;
+  top: -10vh;
+  animation: fallRight1 9s linear infinite;
+}
+
+.leaf-right2 {
+  right: 10vw;
+  top: -3vh;
+  animation: fallRight2 15s linear infinite;
+}
+
+@keyframes fallLeft1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(-360deg); }
+}
+
+@keyframes fallLeft2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(-180deg); }
+}
+
+@keyframes fallRight1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+@keyframes fallRight2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(720deg); }
+}
+
+
+.about-container {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #F6FFE0;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#265902;
+}
+
+.about-container2 {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #F2F1E4;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#A66953;
+}
+
+.about-container3 {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #E2F0D6;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  text-align: center;
+  color:#734E39;
+}
+
+
+
+
+
+.about-gif {
+  width: 80%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav {
+  background-color: #eaf4f4;
+  padding: 1rem;
+  text-align: center;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+

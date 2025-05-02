@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Still & Wild — Climate Reel</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .video-wrapper {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 4rem auto 1.5rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .caption {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      padding: 0 1rem;
+    }
+
+    .next-btn, .start-btn, .home-btn {
+      background: none;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .next-btn:hover, .start-btn:hover, .home-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .home-btn {
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-wrapper">
+    <iframe id="videoFrame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <div class="caption" id="videoCaption"></div>
+
+  <button class="start-btn" id="startBtn" onclick="startWithSound()">Start Listening ▶</button>
+  <button class="next-btn hidden" id="nextBtn" onclick="nextVideo()">Play Next ▶</button>
+
+  <br />
+  <a href="index.html" class="home-btn">⟵ Back to Home</a>
+
+  <script>
+    const videos = [
+      {
+        id: "Qo4JIT8jMtI",
+        caption: "A soft downpour taps gently on leaves and rooftops — a lullaby for the soul."
+      },
+      {
+        id: "P_SeZhpqbvE",
+        caption: "Endless tides breathe in and out, carrying your thoughts far away with them."
+      },
+      {
+        id: "7WPsftkv1ZY",
+        caption: "The hush of wind weaving through tall trees brings calm to a restless mind."
+      },
+      {
+        id: "2G8LAiHSCAs",
+        caption: "A dawn chorus of feathered friends — nature’s way of saying “good morning.”"
+      }
+    ];
+
+    let current = 0;
+    const frame = document.getElementById("videoFrame");
+    const caption = document.getElementById("videoCaption");
+    const startBtn = document.getElementById("startBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function startWithSound() {
+      const video = videos[current];
+      frame.src = `https://www.youtube.com/embed/${video.id}?autoplay=1&mute=0`;
+      caption.innerText = video.caption;
+      startBtn.classList.add("hidden");
+      nextBtn.classList.remove("hidden");
+    }
+
+    function nextVideo() {
+      current = (current + 1) % videos.length;
+      const next = videos[current];
+      frame.src = `https://www.youtube.com/embed/${next.id}?autoplay=1&mute=0`;
+      caption.innerText = next.caption;
+    }
+  </script>
+
+</body>
+</html>

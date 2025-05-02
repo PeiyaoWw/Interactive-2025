@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artists Collections — Still & Wild</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+      color: #fff;
+      position: relative;
+    }
+
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 3rem;
+      z-index: 1;
+      transition: opacity 1s ease;
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-image {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(255, 255, 255, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .right {
+      flex: 1;
+      padding: 2rem;
+      animation: fadeIn 2s ease;
+    }
+
+    .intro-text {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+      white-space: pre-line;
+      opacity: 0;
+      animation: typeIn 4s steps(40, end) forwards;
+    }
+
+    @keyframes typeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .skip-intro {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      animation: pulse 2s infinite;
+      z-index: 10;
+    }
+
+    .skip-intro:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255,255,255, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 10px 5px rgba(255,255,255, 0.1);
+      }
+    }
+
+    .main-content {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 2rem;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      transition: opacity 1s ease;
+      z-index: 2;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .main-content h2 {
+      font-size: 2.2rem;
+      margin-top: 3rem;
+    }
+
+    .main-content p,
+    .main-content li {
+      max-width: 600px;
+      margin: 1rem auto;
+      font-size: 1.2rem;
+    }
+
+    .main-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .art-installation {
+      margin-top: 3rem;
+    }
+
+    .art-installation img {
+      max-width: 90%;
+      margin: 1rem 0;
+      border: 2px solid #fff;
+      border-radius: 10px;
+    }
+
+    .caption {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    .back-intro {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-intro:hover {
+      background: #eee;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient Canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="left">
+    <div class="circle-image">
+      <img src="images/py1.jpg" alt="Black and white nature textures collage" />
+    </div>
+  </div>
+  <div class="right">
+    <div class="intro-text">
+      Step into our Artists Collections — 
+      a space where nature whispers, 
+      art breathes, 
+      and imagination flows freely.
+    </div>
+  </div>
+  <button class="skip-intro" onclick="showMain()" aria-label="Skip Intro">→</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="main">
+  <button class="back-intro" onclick="goBack()" aria-label="Back to Home">← back to home</button>
+
+  <h2>Creative Invitations</h2>
+  <p>Each offering below is a practice of connection — to land, to self, to one another.</p>
+  <ul>
+    <li>Sketching with Stones & Leaves — trace the language of the forest</li>
+    <li>Poetry Prompts from Birdsong — listen, write, and respond to what flies</li>
+    <li>Photography Walks — discover your surroundings with renewed vision</li>
+  </ul>
+
+  <div class="art-installation">
+    <h3>Art Installation: By-the-Wind Sailor Reflections</h3>
+    <p>This installation takes inspiration from <em>Velella Velella</em>, mysterious ocean drifters. Constructed along the shoreline with reclaimed materials, it merges sculpture and verse — a meditation on fragility, currents, and collective presence.</p>
+
+    <img src="images/daining1.jpg" alt="Daining Zhang 1" />
+    <div class="caption">Daining Zhang</div>
+
+    <img src="images/daining2.jpg" alt="Daining Zhang 2" />
+    <div class="caption">Daining Zhang</div>
+
+    <img src="images/daining3.jpg" alt="Daining Zhang 3" />
+    <div class="caption">Daining Zhang</div>
+
+    <img src="images/db1.JPG" alt="Diellza Veliqi & Biray Ozdol 1" />
+    <div class="caption">Diellza Veliqi & Biray Ozdol</div>
+
+    <img src="images/db2.JPG" alt="Diellza Veliqi & Biray Ozdol 2" />
+    <div class="caption">Diellza Veliqi & Biray Ozdol</div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+
+  // Ambient canvas effect
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  for (let i = 0; i < 400; i++) {
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>

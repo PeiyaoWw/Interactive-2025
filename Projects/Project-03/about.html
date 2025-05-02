@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Still & Wild — Falling Leaves</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+      height: 100vh;
+    }
+
+    p{
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+.leaf-left1, .leaf-left2, .leaf-right1, .leaf-right2 {
+      position: fixed;
+      font-size: 3rem;
+      z-index: 2;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+     .leaf-left1 { left: 5vw; top: -5vh; animation: fallLeft1 7s linear infinite; }
+    .leaf-left2 { left: 30vw; top: -8vh; animation: fallLeft2 12s linear infinite; }
+    .leaf-right1 { right: 5vw; top: -10vh; animation: fallRight1 9s linear infinite; }
+    .leaf-right2 { right: 30vw; top: -3vh; animation: fallRight2 15s linear infinite; }
+
+@keyframes fallLeft1 {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(-360deg); }
+    }
+    @keyframes fallLeft2 {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(-180deg); }
+    }
+    @keyframes fallRight1 {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+    @keyframes fallRight2 {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
+    }
+
+    .leaf {
+      position: absolute;
+      top: -10vh;
+      animation: fall 12s linear infinite;
+      animation-delay: var(--delay);
+      left: var(--left);
+      z-index: 1;
+    }
+
+    .leaf:hover {
+      animation-play-state: paused;
+    }
+
+    .emoji {
+      font-size: 5rem;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 3;
+      text-align: center;
+    }
+
+    .leaf:hover .tooltip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .tooltip h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .tooltip p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .tooltip img {
+      margin-top: 1rem;
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.15);
+    }
+
+  .back-intro {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-intro:hover {
+      background: #eee;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      z-index: 3;
+      position: relative;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-content" id="main">
+  <button class="back-intro" onclick="goBack()" aria-label="Back to Home">← back to home</button>
+
+  <p>Hover near the falling leaves to discover our content.</p>
+ 
+  <div class="leaf" style="--delay: 0s; --left: 15vw;">
+    <div class="emoji">🍃</div>
+    <div class="tooltip">
+      <h3>About Still & Wild</h3>
+      <p>Still & Wild is a collaborative webzine born from our shared love for nature, creativity, and reflection. We believe that quiet moments like walking through forests or sketching under trees hold healing power.</p>
+      <img src="https://64.media.tumblr.com/8a35b143cf857cf6ec52ea783c5f81c9/tumblr_on1hxqZOgl1r9i2iuo1_r2_500.gif" alt="Forest gif" />
+    </div>
+  </div>
+
+  <div class="leaf" style="--delay: 1s; --left: 45vw;">
+    <div class="emoji">🍀</div>
+    <div class="tooltip">
+      <h3>Who We Are</h3>
+      <p>We are a group of artists and writers who find joy in subtle details. This project emerged from a longing for calm and connection with ourselves, nature, and each other.</p>
+      <img src="https://miro.medium.com/v2/resize:fit:760/0*yPlR4PAdA2ypwpD2.gif" alt="Nature gif" />
+    </div>
+  </div>
+
+  <div class="leaf-left1">★</div>
+  <div class="leaf-left2">✳︎</div>
+  <div class="leaf-right1">★</div>
+  <div class="leaf-right2">✳︎</div>
+
+  <div class="leaf" style="--delay: 2s; --left: 75vw;">
+    <div class="emoji">🍂</div>
+    <div class="tooltip">
+      <h3>Why We Created This</h3>
+      <p>Still & Wild is our way of stepping into a slower, softer pace. We hope this space reminds you that even a single breath or a fallen leaf can spark wonder.</p>
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/source/b415f429340193.55eea8831a022.gif" alt="Calm gif" />
+    </div>
+  </div>
+
+  <script>
+  function showMain() {
+    document.querySelector('.intro').classList.add('hidden');
+    document.querySelector('#main').classList.add('visible');
+  }
+
+  function goBack() {
+    if (document.referrer && document.referrer !== location.href) {
+      window.history.back();
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  for (let i = 0; i < 400; i++) {
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 2, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+  <footer>
+    © Still & Wild — 2025
+  </footer>
+
+</body>
+</html>
